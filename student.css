@@ -58,13 +58,17 @@ p { margin: 0 0 1em; }
 .lede { max-width: 720px; color: #3c342d; font-size: 1.02rem; line-height: 1.6; }
 
 .hero { overflow: visible; background: var(--parchment-light); border-bottom: 1px solid var(--tan); }
-.hero-grid { min-height: 0; padding: 44px 0 34px; display: block; }
+.hero-grid { min-height: 0; padding: 44px 0 36px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr); gap: 44px; align-items: center; }
 .student-heading { max-width: 760px; }
 .student-heading h1 { margin-bottom: 8px; }
 .project-subtitle { margin: 0 0 10px; color: var(--brick-dark); font-family: inherit; font-size: 1.05rem; font-weight: bold; line-height: 1.4; }
 .byline { margin: 0 0 18px; color: #444; }
 .student-note { max-width: 720px; margin: 0; padding: 0; border: 0; background: transparent; font-size: 1.03rem; }
 .road-mark, .proof { display: none; }
+.hero-photo, .page-photo { margin: 0; }
+.hero-photo img, .page-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--tan); }
+.hero-photo img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 58% center; }
+.hero-photo figcaption, .page-photo figcaption { margin-top: 7px; color: #4d443c; font-size: .84rem; line-height: 1.35; }
 
 .section { padding: 34px 0; }
 .section.soft { background: var(--paper); }
@@ -83,7 +87,9 @@ p { margin: 0 0 1em; }
 .materials-list p { margin: 0 0 8px; color: #333; }
 
 .page-hero { padding: 40px 0 30px; background: var(--parchment-light); border-bottom: 1px solid var(--tan); }
+.page-hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: 42px; align-items: center; }
 .page-hero h1 { margin-bottom: 10px; font-size: 2.1rem; }
+.page-photo img { aspect-ratio: 16 / 9; object-fit: cover; }
 .page-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 14px; color: #333; font-size: .96rem; }
 .page-meta span + span::before { content: "·"; margin-right: 12px; color: var(--brick); }
 
@@ -107,6 +113,11 @@ p { margin: 0 0 1em; }
 .subsection { padding: 0; border: 0; }
 .letter-paper { font-family: inherit; font-size: 1rem; line-height: 2; }
 .letter-paper .address { line-height: 1.3; }
+.submission-proof { width: min(760px, calc(100% - 40px)); margin: 0 auto; padding: 0 0 58px; border-top: 1px solid var(--tan); }
+.submission-proof h2 { margin: 28px 0 10px; color: var(--brick-dark); font-size: 1.4rem; }
+.submission-proof figure { margin: 18px 0 0; }
+.submission-proof img { display: block; width: 100%; height: auto; border: 1px solid var(--tan); }
+.submission-proof figcaption { margin-top: 7px; color: #444; font-size: .92rem; }
 
 .evidence-grid { display: block; max-width: 760px; margin-top: 10px; border-top: 1px solid var(--tan); }
 .evidence { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 18px; padding: 11px 0; border-bottom: 1px solid var(--tan); }
@@ -124,6 +135,9 @@ p { margin: 0 0 1em; }
 .source-list { padding-left: 28px; }
 .source-list li { padding: 4px 0; text-indent: 0; border: 0; }
 .source-note { color: #333; }
+.image-credits { border-top: 1px solid var(--tan); }
+.image-credits ul { margin-bottom: 0; padding-left: 22px; }
+.image-credits li + li { margin-top: 8px; }
 
 .site-footer { padding: 24px 0; background: var(--parchment); color: #3c342d; border-top: 2px solid var(--brick); }
 .footer-grid { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
@@ -138,6 +152,9 @@ p { margin: 0 0 1em; }
   .site-nav { display: none; flex: 0 0 100%; flex-direction: column; gap: 8px; padding: 2px 0 6px; }
   .site-nav.open { display: flex; }
   .hero-grid { padding: 32px 0 26px; }
+  .hero-grid, .page-hero-grid { display: block; }
+  .hero-photo, .page-photo { margin-top: 24px; }
+  .hero-photo img { aspect-ratio: 16 / 10; }
   .section { padding: 26px 0; }
   .split, .split.equal, .balance { display: block; }
   .split > * + *, .balance > * + * { margin-top: 22px; }
@@ -157,7 +174,7 @@ p { margin: 0 0 1em; }
 }
 
 @media print {
-  .site-header, .site-footer, .button-row, .nav-toggle { display: none !important; }
+  .site-header, .site-footer, .button-row, .nav-toggle, .submission-proof { display: none !important; }
   .page-hero { padding: 0; border: 0; }
   .page-hero .lede, .page-meta { display: none; }
   .document { width: 100%; padding: 0; }
